@@ -1,12 +1,9 @@
-import re   #regular Expressions
+#import re   #regular Expressions
+from email_validator import validate_email, EmailNotValidError
 
 def is_valid_email(email:str) -> bool:
-    """
-    Uses regular expression to validate email.
-
-    Returns:
-    True -- email is valid 
-    False -- email is not valid
-    """
-    pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
-    return re.match(pattern, email) is not None
+    try:
+        validate_email(email, check_deliverability=False)
+        return True
+    except EmailNotValidError as e:
+        return False
