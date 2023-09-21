@@ -1,4 +1,7 @@
 def is_valid_password(password: str):
+    if(type(password) != str):
+        raise TypeError
+
     passwordLaenge = len(password)
     
     if(passwordLaenge >= 8 and passwordLaenge <= 12):

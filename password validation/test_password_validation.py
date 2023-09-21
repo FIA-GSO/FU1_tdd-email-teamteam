@@ -49,3 +49,11 @@ def test_is_valid_password__failed(password):
 
     #Assert
     assert result == expectedResult
+
+def test_is_valid_password__type_error():
+    #Arrange
+    expectedResult = False
+
+    #Assert
+    with pytest.raises(TypeError):
+        is_valid_password(12938)
